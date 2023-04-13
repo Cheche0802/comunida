@@ -103,6 +103,11 @@
                         class="bg-orange-600 text-white block rounded-md px-3 py-2 text-base font-medium"
                         aria-current="page">Login</a>
                 </div>
+                <div>
+                    <a href="{{ route('register') }}"
+                        class="bg-blue-300 text-white block rounded-md px-3 py-2 text-base font-medium"
+                        aria-current="page">Registro</a>
+                </div>
             @endauth
         </div>
     </div>

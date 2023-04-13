@@ -320,14 +320,18 @@ return [
         [
             'text'        => 'Usuarios',
             'route'         => 'admin.users.index',
-            'icon'        => 'fa fa-users fa-fw',
+            'icon'        => 'fa fa-user fa-fw',
             'can'          => 'admin.users.index',
         ],
-
         [
             'text'        => 'Roles',
             'route'         => 'admin.roles.index',
             'icon'        => 'fa fa-users-cog fa-fw',
+        ],
+        [
+            'text'        => 'Grupos',
+            'route'         => 'admin.roles.index',
+            'icon'        => 'fa fa-users fa-fw',
         ],
 
         ['header' => 'ADMINISTRADOR'],
