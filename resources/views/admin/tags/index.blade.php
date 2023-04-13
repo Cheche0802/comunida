@@ -7,19 +7,21 @@
 @stop
 
 @section('content')
-@if (session('info'))
+    @if (session('info'))
         <div class="alert alert-success">
-            <strong>{{session('info')}}</strong>
+            <strong>{{ session('info') }}</strong>
         </div>
-@endif
-@if (session('danger'))
+    @endif
+    @if (session('danger'))
         <div class="alert alert-danger">
-            <strong>{{session('danger')}}</strong>
+            <strong>{{ session('danger') }}</strong>
         </div>
-@endif
+    @endif
     <div class="card">
         <div class="card-header">
-            <a class="btn btn-success btn-sm" href="{{route('admin.tags.create')}}">Agregar Etiqueta</a>
+            @can('admin.tags.create')
+                <a class="btn btn-success btn-sm" href="{{ route('admin.tags.create') }}">Agregar Etiqueta</a>
+            @endcan
         </div>
 
         <div class="card-body">
@@ -35,18 +37,23 @@
                 <tbody>
                     @foreach ($tags as $tag)
                         <tr>
-                            <td>{{$tag->id}}</td>
-                            <td>{{$tag->name}}</td>
+                            <td>{{ $tag->id }}</td>
+                            <td>{{ $tag->name }}</td>
                             <td width="10px">
-                                <a class="btn btn-primary btn-sm" href="{{route('admin.tags.edit', $tag)}}"> Editar</a>
+                                @can('admin.tags.edit')
+                                    <a class="btn btn-primary btn-sm" href="{{ route('admin.tags.edit', $tag) }}"> Editar</a>
+                                @endcan
                             </td>
                             <td width="10px">
-                                <form action="{{route('admin.tags.destroy', $tag)}}" method="POST">
-                                    @csrf
-                                    @method('delete')
+                                @can('admin.tags.destroy')
+                                    <form action="{{ route('admin.tags.destroy', $tag) }}" method="POST">
+                                        @csrf
+                                        @method('delete')
 
-                                    <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
-                                </form>
+                                        <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
+                                    </form>
+                                @endcan
+
                             </td>
                         </tr>
                     @endforeach
@@ -55,5 +62,3 @@
         </div>
     </div>
 @stop
-
-

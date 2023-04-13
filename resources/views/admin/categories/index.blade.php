@@ -7,19 +7,21 @@
 @stop
 
 @section('content')
-@if (session('info'))
+    @if (session('info'))
         <div class="alert alert-success">
-            <strong>{{session('info')}}</strong>
+            <strong>{{ session('info') }}</strong>
         </div>
-@endif
-@if (session('danger'))
+    @endif
+    @if (session('danger'))
         <div class="alert alert-danger">
-            <strong>{{session('danger')}}</strong>
+            <strong>{{ session('danger') }}</strong>
         </div>
-@endif
+    @endif
     <div class="card">
         <div class="card-header">
-            <a class="btn btn-success btn-sm" href="{{route('admin.categories.create')}}">Agregar Categoria</a>
+            @can('admin.categories.create')
+                <a class="btn btn-success btn-sm" href="{{ route('admin.categories.create') }}">Agregar Categoria</a>
+            @endcan
         </div>
 
         <div class="card-body">
@@ -35,18 +37,24 @@
                 <tbody>
                     @foreach ($categories as $category)
                         <tr>
-                            <td>{{$category->id}}</td>
-                            <td>{{$category->name}}</td>
+                            <td>{{ $category->id }}</td>
+                            <td>{{ $category->name }}</td>
                             <td width="10px">
-                                <a class="btn btn-primary btn-sm" href="{{route('admin.categories.edit', $category)}}"> Editar</a>
+                                @can('admin.categories.edit')
+                                    <a class="btn btn-primary btn-sm" href="{{ route('admin.categories.edit', $category) }}">
+                                        Editar</a>
+                                @endcan
                             </td>
                             <td width="10px">
-                                <form action="{{route('admin.categories.destroy', $category)}}" method="POST">
-                                    @csrf
-                                    @method('delete')
+                                @can('admin.categories.destroy', $post)
+                                    <form action="{{ route('admin.categories.destroy', $category) }}" method="POST">
+                                        @csrf
+                                        @method('delete')
 
-                                    <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
-                                </form>
+                                        <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
+                                    </form>
+                                @endcan
+
                             </td>
                         </tr>
                     @endforeach
@@ -55,5 +63,3 @@
         </div>
     </div>
 @stop
-
-
