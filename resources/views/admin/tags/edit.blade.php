@@ -7,40 +7,23 @@
 @stop
 
 @section('content')
-@if (session('info'))
+    @if (session('info'))
         <div class="alert alert-success">
-            <strong>{{session('info')}}</strong>
+            <strong>{{ session('info') }}</strong>
         </div>
-@endif
+    @endif
 
-<div class="card">
-    <div class="card-body">
-        {!! Form::model($tag, ['route' => ['admin.tags.update', $tag], 'method' => 'put']) !!}
+    <div class="card">
+        <div class="card-body">
+            {!! Form::model($tag, ['route' => ['admin.tags.update', $tag], 'method' => 'put']) !!}
 
-        <div class="form-group">
-            {!! Form::label('name', 'Nombre') !!}
-            {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => ' Ingrese el nombre de la etiqueta']) !!}
+            @include('admin.tags.partials.form')
 
-            @error('name')
-                <span class="text-danger">{{$message}}</span>
-            @enderror
+            {!! Form::submit('Actualizar etiqueta', ['class' => 'btn btn-primary']) !!}
+
+            {!! Form::close() !!}
         </div>
-
-        <div class="form-group">
-            {!! Form::label('slug', 'Slug') !!}
-            {!! Form::text('slug', null, ['class' => 'form-control', 'readonly']) !!}
-
-            @error('slug')
-            <span class="text-danger">{{$message}}</span>
-        @enderror
-
-        </div>
-
-        {!! Form::submit('Actualizar etiqueta', ['class' => 'btn btn-primary']) !!}
-
-        {!! Form::close() !!}
     </div>
-</div>
 @stop
 
 @section('js')
@@ -56,4 +39,3 @@
         });
     </script>
 @endsection
-

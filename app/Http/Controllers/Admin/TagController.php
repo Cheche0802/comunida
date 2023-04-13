@@ -8,26 +8,34 @@ use App\Models\Tag;
 
 class TagController extends Controller
 {
-  /**
-     * Display a listing of the resource.
-     */
+
+    public function __contruct(){
+        $this->middleware('can:admin.tags.index')->only('index');
+        $this->middleware('can:admin.tags.edit')->only('edit', 'edit');
+        $this->middleware('can:admin.tags.create')->only('create', 'store');
+        $this->middleware('can:admin.tags.destroy')->only('destroy');
+    }
     public function index()
     {
         $tags = Tag::all();
         return view('admin.tags.index', compact('tags'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
-        return view('admin.tags.create');
+        $colors = [
+            'red' => 'Color Rojo',
+            'yellow' => 'Color Amarillo',
+            'blue' => 'Color Azul',
+            'Black' => 'Color Negro',
+            'green' => 'Color Verde',
+            'pink' => 'Color Rosado',
+            'purple' => 'Color Morado',
+        ];
+        return view('admin.tags.create', compact('colors'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -40,25 +48,22 @@ class TagController extends Controller
         return redirect()->route('admin.tags.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Tag $tag)
-    {
-        return view('admin.tags.show', compact('tag'))->with('info', 'Etiqueta creada con exito');
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Tag $tag)
     {
-        return view('admin.tags.edit', compact('tag'));
+        $colors = [
+            'red' => 'Color Rojo',
+            'yellow' => 'Color Amarillo',
+            'blue' => 'Color Azul',
+            'Black' => 'Color Negro',
+            'green' => 'Color Verde',
+            'pink' => 'Color Rosado',
+            'purple' => 'Color Morado',
+        ];
+
+        return view('admin.tags.edit', compact('tag', 'colors'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Tag $tag)
     {
         $request->validate([
@@ -72,9 +77,6 @@ class TagController extends Controller
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Tag $tag)
     {
         $tag->delete();

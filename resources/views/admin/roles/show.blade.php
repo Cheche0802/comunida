@@ -3,7 +3,7 @@
 @section('title', 'Comunidad de Gracia')
 
 @section('content_header')
-    <h1>Mostrar detaller Categoria</h1>
+    <h1>Ver Rol</h1>
 @stop
 
 @section('content')

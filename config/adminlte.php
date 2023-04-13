@@ -150,7 +150,7 @@ return [
 
     'layout_topnav' => null,
     'layout_boxed' => null,
-    'layout_fixed_sidebar' => null,
+    'layout_fixed_sidebar' => true,
     'layout_fixed_navbar' => null,
     'layout_fixed_footer' => null,
     'layout_dark_mode' => null,
@@ -323,6 +323,13 @@ return [
             'icon'        => 'fa fa-users fa-fw',
             'can'          => 'admin.users.index',
         ],
+
+        [
+            'text'        => 'Roles',
+            'route'         => 'admin.roles.index',
+            'icon'        => 'fa fa-users-cog fa-fw',
+        ],
+
         ['header' => 'ADMINISTRADOR'],
         [
             'text' => 'Categorias',
