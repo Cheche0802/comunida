@@ -17,3 +17,9 @@
        @apply px-6
     }
 }
+
+@media(max-width:640px){
+    #log{
+       display: none;
+    }
+}

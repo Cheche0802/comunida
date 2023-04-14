@@ -34,17 +34,15 @@
             <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 {{-- Logotipo --}}
                 <a href="/" class="flex flex-shrink-0 items-center">
-                    <img class="block h-14 mt-5 w-auto lg:hidden"
-                        src="storage/logos/logo.png" alt="Comunidad de gracia">
-                    <img class="hidden h-10 w-auto lg:block"
-                        src="storage/logos/logo.png" alt="Comunidad de gracia">
-                </a>
+                    <img class="block  mt-5 w-auto lg:hidden" src="storage/logos/logo.png" alt="Comunidad de gracia">
+                    <img class="hidden h-10 w-auto lg:block" src="storage/logos/logo.png" alt="Comunidad de gracia">
+            </a>
                 {{-- Menu LG --}}
                 <div class="hidden sm:ml-6 sm:block">
                     <div class="flex space-x-4">
                         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                         @foreach ($categories as $category)
-                            <a href="{{route('posts.category', $category )}}"
+                            <a href="{{ route('posts.category', $category) }}"
                                 class="text-black-600 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">
                                 {{ $category->name }} </a>
                         @endforeach
@@ -83,10 +81,10 @@
                             <a href="{{ route('profile.show') }}" class="block px-4 py-2 text-sm text-gray-700"
                                 role="menuitem" tabindex="-1" id="user-menu-item-0">Tu perfil</a>
 
-                          @can('admin.home')
-                          <a href="{{ route('admin.home') }}" class="block px-4 py-2 text-sm text-gray-700"
-                          role="menuitem" tabindex="-1" id="user-menu-item-0">Dashboard</a>
-                          @endcan
+                            @can('admin.home')
+                                <a href="{{ route('admin.home') }}" class="block px-4 py-2 text-sm text-gray-700"
+                                    role="menuitem" tabindex="-1" id="user-menu-item-0">Dashboard</a>
+                            @endcan
 
                             <form method="POST" action="{{ route('logout') }}" x-data>
                                 @csrf
@@ -99,12 +97,12 @@
                 </div>
             @else
                 <div>
-                    <a href="{{ route('login') }}"
+                    <a href="{{ route('login') }}" id="log"
                         class="bg-orange-600 text-white block rounded-md px-3 py-2 text-base font-medium"
                         aria-current="page">Login</a>
                 </div>
                 <div>
-                    <a href="{{ route('register') }}"
+                    <a href="{{ route('register') }}" id="log"
                         class="bg-blue-300 text-white block rounded-md px-3 py-2 text-base font-medium"
                         aria-current="page">Registro</a>
                 </div>
@@ -118,10 +116,19 @@
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
 
             @foreach ($categories as $category)
-                <a href="{{route('posts.category', $category )}}"
+                <a href="{{ route('posts.category', $category) }}"
                     class="text-black-600 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">
                     {{ $category->name }}</a>
             @endforeach
+
+            <a href="{{ route('login') }}"
+            class="bg-orange-600 text-white block rounded-md px-3 py-2 text-base font-medium"
+            aria-current="page">Login</a>
+            <a href="{{ route('register') }}"
+            class="bg-blue-300 text-white block rounded-md px-3 py-2 text-base font-medium"
+            aria-current="page">Registro</a>
         </div>
+
+
     </div>
 </nav>

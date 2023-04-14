@@ -39,4 +39,7 @@
 
         @livewireScripts
     </body>
+    <footer>
+        @livewire('footer')
+    </footer>
 </html>
