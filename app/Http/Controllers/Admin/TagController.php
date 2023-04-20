@@ -28,10 +28,10 @@ class TagController extends Controller
             'red' => 'Color Rojo',
             'yellow' => 'Color Amarillo',
             'blue' => 'Color Azul',
-            'Black' => 'Color Negro',
+            'slate' => 'Color Plateado',
             'green' => 'Color Verde',
-            'pink' => 'Color Rosado',
-            'purple' => 'Color Morado',
+            'fuchsia' => 'Color Fucsia',
+            'cyan' => 'Color Cyan',
         ];
         return view('admin.tags.create', compact('colors'));
     }

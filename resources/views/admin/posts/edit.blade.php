@@ -3,7 +3,7 @@
 @section('title', 'Comunidad de Gracia')
 
 @section('content_header')
-    <h1>Editar post</h 1>
+    <h1>Editar post</h1>
 @stop
 
 @section('content')
