@@ -333,6 +333,11 @@ return [
             'route'         => 'admin.roles.index',
             'icon'        => 'fa fa-users fa-fw',
         ],
+        [
+            'text'        => 'Enviar Mensaje',
+            'route'         => 'admin.notifications.index',
+            'icon'        => 'fa fa-users fa-fw',
+        ],
 
         ['header' => 'ADMINISTRADOR'],
         [
