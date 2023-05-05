@@ -9,11 +9,11 @@
 @section('content')
 <div class="card">
     <div class="card-body">
-        {!! Form::open(['route' => 'admin.categories.store']) !!}
+        {!! Form::open(['route' => 'admin.notifications.store']) !!}
 
         <div class="form-group">
-            {!! Form::label('user_id', 'Usuario') !!}
-            {!! Form::select('user_id', $users, ['class' => 'form-control']) !!}
+            {!! Form::label('recipient_id', 'Usuario') !!}
+            {!! Form::select('recipient_id', $users, ['class' => 'form-control']) !!}
 
             @error('user_id')
                 <span class="text-danger">{{ $message }}</span>

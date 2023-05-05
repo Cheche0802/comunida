@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use  App\Models\Notification;
 
 class NotificationController extends Controller
 {
@@ -13,7 +14,7 @@ class NotificationController extends Controller
      */
     public function index()
     {
-        $users = User::pluck('name', 'id');
+        $users = User::where('id', '!=', auth()->id())->pluck('name', 'id');
         return view('admin.notifications.index', compact('users'));
     }
 
@@ -30,7 +31,14 @@ class NotificationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $users = User::all();
+        Notification::create([
+            'sender_id' => auth()->id(),
+            'recipient_id' => $request->recipient_id,
+            'extract' => $request->extract,
+        ]);
+
+        return back()->with('flash', 'El mensaje fue creado con exito');
     }
 
     /**
