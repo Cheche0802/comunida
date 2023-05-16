@@ -4,18 +4,19 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Message;
 use App\Models\User;
-use  App\Models\Notification;
+use Spatie\Permission\Models\Role;
 
-class NotificationController extends Controller
+class MessageController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $users = User::where('id', '!=', auth()->id())->pluck('name', 'id');
-        return view('admin.notifications.index', compact('users'));
+
+        return view('admin.messages.index');
     }
 
     /**
@@ -23,7 +24,9 @@ class NotificationController extends Controller
      */
     public function create()
     {
-        //
+        $roles = Role::pluck('name', 'id');
+        $users = User::where('id', '!=', auth()->id())->pluck('name', 'id');
+        return view('admin.messages.create', compact('roles', 'users'));
     }
 
     /**
@@ -31,14 +34,14 @@ class NotificationController extends Controller
      */
     public function store(Request $request)
     {
-        $users = User::all();
-        Notification::create([
-            'sender_id' => auth()->id(),
+        Message::create([
+            'sender_id' =>  auth()->id(),
             'recipient_id' => $request->recipient_id,
-            'extract' => $request->extract,
+            'group_recipient_id' => $request->grupo_id,
+            'body' => $request->body
         ]);
 
-        return back()->with('flash', 'El mensaje fue creado con exito');
+        return back();
     }
 
     /**

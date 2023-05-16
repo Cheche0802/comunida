@@ -334,10 +334,11 @@ return [
             'icon'        => 'fa fa-users fa-fw',
         ],
         [
-            'text'        => 'Enviar Mensaje',
-            'route'         => 'admin.notifications.index',
-            'icon'        => 'fa fa-users fa-fw',
+            'text'        => 'Mensajes',
+            'route'         => 'admin.messages.index',
+            'icon'        => 'fas fa-envelope',
         ],
+
 
         ['header' => 'ADMINISTRADOR'],
         [
