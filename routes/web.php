@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\NotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,8 @@ Route::get('posts/{post:slug}', [PostController::class, 'show'])->name('posts.sh
 
 Route::get('category/{category}', [PostController::class, 'category'])->name('posts.category');
 Route::get('tag/{tag}', [PostController::class, 'tag'])->name('posts.tag');
+Route::get('notifications', [NotificationController::class, 'index'])->name('notifications.index');
+
 
 
 Route::middleware([

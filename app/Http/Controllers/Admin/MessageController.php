@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Message;
 use App\Models\User;
+use App\Notifications\MessageSend;
 use Spatie\Permission\Models\Role;
 
 class MessageController extends Controller
@@ -34,12 +35,20 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        Message::create([
+        $this->validate($request, [
+            'body' => 'required',
+        ]);
+
+        $message = Message::create([
             'sender_id' =>  auth()->id(),
             'recipient_id' => $request->recipient_id,
             'group_recipient_id' => $request->grupo_id,
             'body' => $request->body
         ]);
+
+        $recipient = User::find($request->recipient_id);
+
+        $recipient->notify(new MessageSend($message));
 
         return back();
     }
