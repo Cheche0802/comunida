@@ -23,6 +23,10 @@ Route::get('tag/{tag}', [PostController::class, 'tag'])->name('posts.tag');
 Route::get('notifications', [NotificationController::class, 'index'])->name('notifications.index');
 
 
+Route::get('/eventos', function () {
+    return view('eventos.index');
+})->name('eventos');
+
 
 Route::middleware([
     'auth:sanctum',
