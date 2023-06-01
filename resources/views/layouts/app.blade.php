@@ -13,6 +13,7 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @yield('scripts')
 
         <!-- Styles -->
         @livewireStyles
