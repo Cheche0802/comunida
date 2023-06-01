@@ -53,7 +53,7 @@
             @auth
                 <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                     {{-- Boton Notificacion --}}
-                    @if( $count = Auth::user()->notifications->count())
+                    @if( $count = Auth::user()->unreadNotifications->count())
 
                     <a href="{{route('notifications.index')}}" type="button"
                     class="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">

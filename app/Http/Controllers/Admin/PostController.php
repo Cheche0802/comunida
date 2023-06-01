@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Tag;
 use App\Http\Requests\PostRequest;
 use Illuminate\Validation\Validator;
+use App\Events\PostCreated;
 
 use Illuminate\Support\Facades\Storage;
 
@@ -40,7 +41,6 @@ class PostController extends Controller
     public function store(PostRequest $request)
     {
 
-
         $post  = Post::create($request->all());
         if ($request->file('file')) {
             $url = Storage::put('posts', $request->file('file'));
@@ -54,6 +54,8 @@ class PostController extends Controller
         if ($request->tags) {
             $post->tags()->attach($request->tags);
         }
+
+         event(new PostCreated($post));
 
         return redirect()->route('admin.posts.index');
     }

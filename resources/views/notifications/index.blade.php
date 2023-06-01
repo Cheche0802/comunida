@@ -8,7 +8,14 @@
                 <ul class="list-group">
                     @foreach ($unreadNotifications as $unreadNotifications)
                         <li class="list-group-item"><a href="{{ $unreadNotifications->data['link']}}">
-                            {{ $unreadNotifications->data['text']}}</a></li>
+                            {{ $unreadNotifications->data['text']}}</a>
+                        <form method="POST" action="{{route('notifications.read', $unreadNotifications->id)}}" class="pull-rught">
+                            {{method_field('PATCH')}}
+                            @csrf
+                            <button class="btn btn-danger btn-xs">X</button>
+                        </form>
+
+                        </li>
                     @endforeach
                 </ul>
             </div>
@@ -17,7 +24,13 @@
                 <ul class="list-group">
                     @foreach ($readNotifications as $readNotifications)
                     <li class="list-group-item"><a href="{{ $readNotifications->data['link']}}">
-                        {{ $readNotifications->data['text']}}</a></li>
+                        {{ $readNotifications->data['text']}}</a>
+                        <form method="POST" action="{{route('notifications.destroy', $readNotifications->id)}}" class="pull-rught">
+                            {{method_field('DELETE')}}
+                            @csrf
+                            <button class="btn btn-danger btn-xs">X</button>
+                        </form>
+                    </li>
                     @endforeach
                 </ul>
             </div>

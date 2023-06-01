@@ -2,14 +2,19 @@
 
 namespace App\Models;
 
+use App\Events\PostCreated;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+
 
 class Post extends Model
 {
     use HasFactory;
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
+    protected $events = [
+        'created' =>PostCreated::class
+    ];
 
     //Relacion has to many
     public function category(){

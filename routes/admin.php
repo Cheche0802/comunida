@@ -24,4 +24,4 @@ Route::resource('tag', TagController::class)->except('show')->names('admin.tags'
 
 Route::resource('post', PostController::class)->except('show')->names('admin.posts');
 
-Route::resource('message', MessageController::class)->except('show')->names('admin.messages');
+Route::resource('message', MessageController::class)->names('admin.messages');

@@ -21,7 +21,8 @@ Route::get('posts/{post:slug}', [PostController::class, 'show'])->name('posts.sh
 Route::get('category/{category}', [PostController::class, 'category'])->name('posts.category');
 Route::get('tag/{tag}', [PostController::class, 'tag'])->name('posts.tag');
 Route::get('notifications', [NotificationController::class, 'index'])->name('notifications.index');
-
+Route::patch('notificaciones/{id}', [NotificationController::class, 'read'])->name('notifications.read');
+Route::delete('notificaciones/{id}', [NotificationController::class, 'destroy'])->name('notifications.destroy');
 
 
 Route::middleware([
