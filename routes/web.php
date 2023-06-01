@@ -24,6 +24,10 @@ Route::get('notifications', [NotificationController::class, 'index'])->name('not
 Route::patch('notificaciones/{id}', [NotificationController::class, 'read'])->name('notifications.read');
 Route::delete('notificaciones/{id}', [NotificationController::class, 'destroy'])->name('notifications.destroy');
 
+Route::get('/eventos', function () {
+    return view('eventos.index');
+})->name('eventos');
+
 
 Route::middleware([
     'auth:sanctum',
