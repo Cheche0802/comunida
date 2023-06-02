@@ -6,25 +6,39 @@
     <script src="{{ asset('fullcalendar/timegrid/index.global.js') }}"></script>
     <script src="{{ asset('fullcalendar/list/index.global.js') }}"></script>
     <script src="{{ asset('fullcalendar/google-calendar/index.global.js') }}"></script>
-    <script src="{{ asset('fullcalendar/icalendar/index.global.js') }}"></script>
+    <script src="{{ asset('fullcalendar/bootstrap/index.global.js') }}"></script>
+
+
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        $(document).ready(function() {
+            var events = [];
             var calendarEl = document.getElementById('calendar');
             var initialLocaleCode = 'Es';
-            var localeSelectorEl = document.getElementById('locale-selector');
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
+                contentHeight: 400,
+                buttonText: {
+                    prevYear: 'Anterior año',
+                    nextYear: 'Siguiente año',
+                    prev: 'Anterior',
+                    next: 'Siguiente',
+                    today: 'Hoy',
+                    month: 'Mes',
+                    week: 'Semana',
+                    day: 'Día',
+                    list: 'Lista'
+                },
                 headerToolbar: {
-                    left: 'prev,next today addEventButton',
+                    left: 'prevYear prev next nextYear today',
                     center: 'title',
-                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+                    right: 'dayGridMonth timeGridWeek timeGridDay listMonth'
                 },
                 locale: initialLocaleCode,
                 buttonIcons: false,
@@ -33,41 +47,84 @@
                 editable: true,
                 dayMaxEvents: true,
                 events: 'https://fullcalendar.io/api/demo-feeds/events.json?overload-day',
-                customButtons: {
-                    addEventButton: {
-                        text: 'add event...',
-                        click: function() {
-                            var dateStr = prompt('Enter a date in YYYY-MM-DD format');
-                            var date = new Date(dateStr + 'T00:00:00'); // will be in local time
-
-                            if (!isNaN(date.valueOf())) { // valid?
-                                calendar.addEvent({
-                                    title: 'dynamic event',
-                                    start: date,
-                                    allDay: true
-                                });
-                                alert('Great. Now, update your database...');
-                            } else {
-                                alert('Invalid date.');
-                            }
-                        }
-                    }
+                events: function(info, successCallback, failureCallback) {
+                    successCallback(events);
                 }
+            });
+
+            function ShowCalendar() {
+                calendar.render();
+            }
+
+            $("#addEvent").on("click", function() {
+                events.push({
+                    title: $("#eventName").val(),
+                    start: $("#fromDate").val(),
+                    end: $("#toDate").val()
+                });
+
+                calendar.refetchEvents();
             });
 
             calendar.render();
         });
     </script>
 
-    <div class="container ">
+
+
+    </script>
+
+    <div class="container">
+
+        <div class="page-header text-center">
+            <h1>Comunidad de Gracias</h1>
+        </div>
+
+        <hr>
+
+        <form>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="fromDate">Event Name:</label>
+                        <input type="text" class="form-control" placeholder="Enter event" id="eventName">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="fromDate">From:</label>
+                        <input type="date" class="form-control" placeholder="Enter from date" id="fromDate">
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="toDate">To:</label>
+                        <input type="date" class="form-control" id="toDate">
+                    </div>
+                </div>
+
+            </div>
+
+            <button type="button" class="btn btn-primary" id="addEvent">Add Event</button>
+
+        </form>
+
+        <hr>
+
         <div class="row">
-            <div class="col"></div>
-            <div class="col-8">
+            <div class="col-md-12">
                 <div id="calendar"></div>
             </div>
-            <div class="col"></div>
         </div>
+
     </div>
+
 
 
 
