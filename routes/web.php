@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\NotificationController;
-
+use App\Http\Controllers\CalendarController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,9 +24,10 @@ Route::get('notifications', [NotificationController::class, 'index'])->name('not
 Route::patch('notificaciones/{id}', [NotificationController::class, 'read'])->name('notifications.read');
 Route::delete('notificaciones/{id}', [NotificationController::class, 'destroy'])->name('notifications.destroy');
 
-Route::get('/eventos', function () {
-    return view('eventos.index');
-})->name('eventos');
+Route::get('calendar/index', [CalendarController::class, 'index'])->name('calendar.index');
+Route::post('calendar', [CalendarController::class, 'store'])->name('calendar.store');
+Route::patch('calendar/update/{id}', [CalendarController::class, 'update'])->name('calendar.update');
+Route::delete('calendar/destroy/{id}', [CalendarController::class, 'destroy'])->name('calendar.destroy');
 
 
 Route::middleware([
