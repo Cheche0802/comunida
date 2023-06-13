@@ -339,6 +339,12 @@ return [
             'icon'        => 'fas fa-envelope',
         ],
 
+        [
+            'text'        => 'Calendario',
+            'route'         => 'admin.calendar.index',
+            'icon'        => 'fas fa-calendar',
+        ],
+
 
         ['header' => 'ADMINISTRADOR'],
         [

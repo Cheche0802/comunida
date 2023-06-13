@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\CalendarController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -25,3 +26,7 @@ Route::resource('tag', TagController::class)->except('show')->names('admin.tags'
 Route::resource('post', PostController::class)->except('show')->names('admin.posts');
 
 Route::resource('message', MessageController::class)->names('admin.messages');
+
+Route::resource('calendar', CalendarController::class)->names('admin.calendar');
+
+
