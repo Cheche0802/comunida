@@ -3,7 +3,7 @@
         <div class="relative flex h-16 items-center justify-between">
 
             <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start pt-3">
-            {{-- <div class="position-absolute top-100 start-100 translate-middle" style="border: red 1px solid"> --}}
+                {{-- <div class="position-absolute top-100 start-100 translate-middle" style="border: red 1px solid"> --}}
                 {{-- Logotipo --}}
                 {{-- <a href="/" class="flex flex-shrink-0 items-center "> --}}
                 <a href="/" class="d-flex align-items-center">
@@ -19,6 +19,14 @@
                     </div>
                 </div>
             </div>
+
+            <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start pt-3">
+
+                <div class="rounded-circle" style="background: rebeccapurple">
+                    <i class="fas fa-map-marker-alt text-white"></i>
+                </div>
+                asda
+            </div>
         </div>
     </div>
 
@@ -26,8 +34,6 @@
     <div class="sm:hidden" id="mobile-menu" x-show="open" x-on:click.away="open=false ">
         <div class="space-y-1 px-2 pt-2 pb-3">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-
-
         </div>
     </div>
 </nav>
