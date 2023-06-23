@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\UsController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,6 +31,7 @@ Route::post('calendar', [CalendarController::class, 'store'])->name('calendar.st
 Route::patch('calendar/update/{id}', [CalendarController::class, 'update'])->name('calendar.update');
 Route::delete('calendar/destroy/{id}', [CalendarController::class, 'destroy'])->name('calendar.destroy');
 
+Route::get('us', [UsController::class, 'index'])->name('us.index');
 
 Route::middleware([
     'auth:sanctum',
