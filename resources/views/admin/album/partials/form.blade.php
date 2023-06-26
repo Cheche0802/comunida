@@ -62,5 +62,9 @@
         </div>
 
         <p>la imagen no debe superar los dos 2MB</p>
+        <div class="form-group">
+            <label class="label-info">Image</label>
+            <div class="dropzone" id="myDropzone"></div>
+        </div>
     </div>
 </div>

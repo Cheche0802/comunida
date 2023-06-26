@@ -9,8 +9,7 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\CalendarController;
-
-
+use App\Http\Controllers\Admin\PhotoAlbumController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -31,5 +30,9 @@ Route::resource('message', MessageController::class)->names('admin.messages');
 Route::resource('calendar', CalendarController::class)->names('admin.calendar');
 
 Route::resource('album', AlbumController::class)->names('admin.album');
+
+Route::post('album/{img}/photos', [PhotoAlbumController::class, 'store'])->name('admin.album.photo.store');
+
+Route::delete('album/{img}', [PhotoAlbumController::class, 'destroy'])->name('admin.album.photo.destroy');
 
 

@@ -32,7 +32,16 @@ class AlbumController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //$this->authorize('create', new Album);        
+        
+        $this->validate($request, [
+            'title' =>'required|max:255',
+            'description' =>'required|max:255',            
+        ]);
+
+        $album = Album::create($request->all());
+
+        return redirect()->route('album.edit', $album);
     }
 
     /**
