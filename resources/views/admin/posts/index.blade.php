@@ -16,10 +16,10 @@
     @endif
 
     @if (session('danger'))
-    <div class="alert alert-success">
-        <strong>{{ session('danger') }}</strong>
-    </div>
-@endif
+        <div class="alert alert-success">
+            <strong>{{ session('danger') }}</strong>
+        </div>
+    @endif
 
     @livewire('admin.posts-index')
 @stop

@@ -1,6 +1,6 @@
 <nav class="bg-cyan-800 " x-data="{ open: false }" style="height: 5rem;">
-    <div class="px-2 mx-0 max-w-7xl sm:px-6">
-        <div class="relative flex items-center justify-between h-16">
+    <div class="p-0 m-0">
+        <div class="relative flex items-center justify-between h-16 pl-2">
 
             <div class="flex items-center justify-between flex-1 pt-3 sm:items-stretch sm:justify-start">
                 {{-- <div class="position-absolute top-100 start-100 translate-middle" style="border: red 1px solid"> --}}
@@ -20,7 +20,7 @@
                 </div>
             </div>
 
-            <div class="flex items-center justify-center pt-3 pr-10 flex-row-reverse1 sm:items-stretch sm:justify-start">
+            <div class="flex items-center justify-center pt-3 pl-2 pr-2 flex-row-reverse1 sm:items-stretch sm:justify-start">
 
                 <div class="col-auto col-sm col-xl col-md-1 justify-content-center align-items-center" {{-- style="border: 1px red solid" --}}>
                     <div class="text-center "style="background: #fcb900; border-radius: 50%; width: 25px; height: 25px;">

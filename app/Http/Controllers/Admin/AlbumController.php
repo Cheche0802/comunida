@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Album;
 use Illuminate\Http\Request;
 
 class AlbumController extends Controller
@@ -12,7 +13,10 @@ class AlbumController extends Controller
      */
     public function index()
     {
-        //
+        //cheche agrega el metodo alloweb no se a q se refiere 
+        $albums = Album::all();
+
+        return view('admin.album.index', compact('albums'));
     }
 
     /**
@@ -20,7 +24,7 @@ class AlbumController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.album.create');
     }
 
     /**

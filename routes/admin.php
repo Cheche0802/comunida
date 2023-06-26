@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AlbumController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\HomeController;
@@ -28,5 +29,7 @@ Route::resource('post', PostController::class)->except('show')->names('admin.pos
 Route::resource('message', MessageController::class)->names('admin.messages');
 
 Route::resource('calendar', CalendarController::class)->names('admin.calendar');
+
+Route::resource('album', AlbumController::class)->names('admin.album');
 
 
