@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\CalendarController;
 use App\Http\Controllers\Admin\PhotoAlbumController;
+use App\Http\Controllers\Admin\PreachController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -31,8 +32,8 @@ Route::resource('calendar', CalendarController::class)->names('admin.calendar');
 
 Route::resource('album', AlbumController::class)->names('admin.album');
 
-Route::post('album/{img}/photos', [PhotoAlbumController::class, 'store'])->name('admin.album.photo.store');
+//Route::post('album/{img}/photos', [PhotoAlbumController::class, 'store'])->names('admin.album.photo.store');
 
-Route::delete('album/{img}', [PhotoAlbumController::class, 'destroy'])->name('admin.album.photo.destroy');
+//Route::delete('album/{img}', [PhotoAlbumController::class, 'destroy'])->names('admin.album.photo.destroy');
 
-
+Route::resource('preachs', PreachController::class)->names('admin.preachs');
