@@ -2,7 +2,7 @@
 
 <div class="form-group">
     {!! Form::label('title', 'Titulo')!!}
-    {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Ingresar el titulo de la predica'])!!}
+    {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Ingresar el titulo de la predica'])!!}
     @error('title')
         <span class="text-danger">{{ $message }}</span>
     @enderror
@@ -18,7 +18,7 @@
 
 <div class="form-group">
     {!! Form::label('name', 'Nombre del predicardor')!!}
-    {!! Form::textarea('name', null, ['class' => 'form-control', 'placeholder' => 'Ingresar el nombre del predicador'])!!}
+    {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Ingresar el nombre del predicador'])!!}    
     @error('name')
         <span class="text-danger">{{ $message }}</span>
     @enderror
@@ -45,10 +45,13 @@
 <div class="row mb-3">
     <div class="col">
         <div class="image-wrapper">
-           @isset ($post->image)
-            <img id="picture" src="{{ Storage::url($post->image->url)}}" alt="">
+           @isset ($preache->image)
+            {{-- <img id="picture" src="{{ Storage::url($preache->preaches->url)}}" alt=""> --}}
+            <input type="text" name="url" value="{{ Storage::url($preache->preaches->url)}}" id="arch">
+            <input type="text" name="url" value="Storage::url($preache->preaches->url)" id="arch">
            @else
-            <img id="picture" src="/storage/default/custom.jpg" alt="">
+            {{-- <img id="picture" src="/storage/default/custom.jpg" alt=""> --}}
+            <input type="text" name="url" value="Storage::url($preache->preaches->url) del else" id="arch">
             @endisset
         </div>
     </div>

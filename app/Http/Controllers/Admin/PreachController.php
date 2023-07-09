@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Preach;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PreachController extends Controller
 {
@@ -29,7 +30,18 @@ class PreachController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $preach  = Preach::create($request->all());
+        if ($request->file('file')) {
+            $url = Storage::put('preachs', $request->file('file'));
+
+            $preach->image()->create([
+                'url' => $url
+            ]);
+        }
+
+        //event(new PostCreated($post));
+
+        return redirect()->route('admin.preachs.index');
     }
 
     /**
@@ -45,6 +57,8 @@ class PreachController extends Controller
      */
     public function edit(Preach $preach)
     {
+        dd($preach);
+        
         return view('admin.preach.edit',[
             'preach' => $preach
         ]);
