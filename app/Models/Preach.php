@@ -14,7 +14,7 @@ class Preach extends Model
         'slug',
         'name',
         'status',
-        'url',
+        'iframe',
         'user_id',
     ];
 }

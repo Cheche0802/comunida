@@ -17,11 +17,20 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('name', 'Nombre del predicardor')!!}
-    {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Ingresar el nombre del predicador'])!!}    
-    @error('name')
-        <span class="text-danger">{{ $message }}</span>
-    @enderror
+    <div class="col">
+        {!! Form::label('name', 'Nombre del predicardor')!!}
+        {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Ingresar el nombre del predicador'])!!}    
+        @error('name')
+            <span class="text-danger">{{ $message }}</span>
+        @enderror
+    </div>
+    <div class="col">
+        {!! Form::label('date', 'Fecha de predica')!!}
+        {!! Form::date('date', null, ['class' => 'form-control', 'placeholder' => 'Ingresar la fecha'])!!}    
+        @error('name')
+            <span class="text-danger">{{ $message }}</span>
+        @enderror
+    </div>
 </div>
 
 <div class="form-group">
@@ -44,25 +53,21 @@
 
 <div class="row mb-3">
     <div class="col">
-        <div class="image-wrapper">
-           @isset ($preache->image)
-            {{-- <img id="picture" src="{{ Storage::url($preache->preaches->url)}}" alt=""> --}}
-            <input type="text" name="url" value="{{ Storage::url($preache->preaches->url)}}" id="arch">
-            <input type="text" name="url" value="Storage::url($preache->preaches->url)" id="arch">
-           @else
-            {{-- <img id="picture" src="/storage/default/custom.jpg" alt=""> --}}
-            <input type="text" name="url" value="Storage::url($preache->preaches->url) del else" id="arch">
-            @endisset
+        <div class="form-group {{ $errors->has('iframe') ? 'has-error' : '' }}">
+            <label>Contenido embebido (iframe)</label>
+            <textarea rows="2" name="iframe" id="ckeditor" class="form-control"
+                placeholder="Ingresa contenido embebido (iframe) de audio o video">{{ old('iframe') }}</textarea>
+            {!! $errors->first('iframe', '<span class="help-block">:message</span>') !!}
         </div>
     </div>
-    <div class="col">
+    {{-- <div class="col">
         <div class="form-group">
             {!! Form::label('file', 'Audio o mp3 de la predica') !!}
             {!! Form::file('file', ['class' => 'form-control-file', 'accept' => 'image</*', 'max' => '2048']) !!}
         </div>
 
         <p>la imagen no debe superar los dos 2MB</p>
-    </div>
+    </div> --}}
 </div>
 
 <div class="form-group">

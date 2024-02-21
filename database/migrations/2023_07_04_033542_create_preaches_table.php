@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('slug');
             $table->text('name');
             $table->enum('status',[0,1,2])->default(1);
-            $table->string('url');            
+            $table->string('iframe');            
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
