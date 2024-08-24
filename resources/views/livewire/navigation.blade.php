@@ -35,7 +35,7 @@
                 {{-- Logotipo --}}
                 <a href="/" class="flex flex-shrink-0 items-center">
                     <img class="block  mt-5 w-auto lg:hidden" src="storage/logos/logo.png" alt="Comunidad de gracia">
-                    <img class="hidden h-16 w-auto lg:block" src="storage/logos/logo.png" alt="Comunidad de gracia">
+                    <img class="hidden h-12 w-auto lg:block" src="storage/logos/LOGOsin_fondo horizontal.png" alt="Comunidad de gracia">
                 </a>
                 {{-- Menu LG --}}
                 <div class="hidden sm:ml-6 sm:block ">
@@ -43,15 +43,15 @@
                         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                         @foreach ($categories as $category)
                             <a href="{{ route('posts.category', $category) }}"
-                                class="text-black-600 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-5 text-base font-medium">
+                                class="text-black-600 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-5 text-base font-medium" style="line-height:0.25rem">
                                 {{ $category->name }} </a>
                         @endforeach
                         
-                        <a href="{{ route('preachs.index') }}" class="text-black-600 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-5 text-base font-medium">
+                        <a href="{{ route('preachs.index') }}" class="text-black-600 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-5 text-base font-medium" style="line-height:0.25rem">
                             Predicas
                         </a>
 
-                        <a href="{{ route('us.index') }}" class="text-black-600 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-5 text-base font-medium">
+                        <a href="{{ route('us.index') }}" class="text-black-600 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-5 text-base font-medium" style="line-height:0.25rem">
                             Quien&eacute;s somos 
                         </a>
                     </div>                    
