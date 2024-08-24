@@ -16,8 +16,10 @@ return new class extends Migration
             $table->string('title');
             $table->text('slug');
             $table->text('name');
+            $table->date('date')->nullable();
             $table->enum('status',[0,1,2])->default(1);
-            $table->string('iframe');            
+            $table->text('iframe');  
+            $table->text('extract')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 

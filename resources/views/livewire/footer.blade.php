@@ -73,17 +73,17 @@
                 <div class="col-auto pl-2 col-sm col-xl col-md-1 justify-content-center align-items-center " {{-- style="border: 1px red solid" --}}>
                     <ul>
                         <li>
-                            <a href="https://www.instagram.com/cdg_vzla/?fbclid=IwAR2mIJ-VNpxrNSkb2smMkzWZE80g8iFZMbRsqtGSmVVy_7FHON_439e-HVM">
+                            <a href="https://www.instagram.com/cdg_vzla/?fbclid=IwAR2mIJ-VNpxrNSkb2smMkzWZE80g8iFZMbRsqtGSmVVy_7FHON_439e-HVM" target="_blank">
                                 <i class="text-white fab fa-instagram"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="https://www.facebook.com/comunidaddegraciavzla/">
+                            <a href="https://www.facebook.com/comunidaddegraciavzla/" target="_blank">
                                 <i class="text-white fab fa-facebook"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="https://twitter.com/bajosugracia">
+                            <a href="https://twitter.com/bajosugracia" target="_blank">
                                 <i class="text-white fab fa-twitter"></i>
                             </a>
                         </li>

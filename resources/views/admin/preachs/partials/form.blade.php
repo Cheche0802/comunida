@@ -54,20 +54,18 @@
 <div class="row mb-3">
     <div class="col">
         <div class="form-group {{ $errors->has('iframe') ? 'has-error' : '' }}">
-            <label>Contenido embebido (iframe)</label>
-            <textarea rows="2" name="iframe" id="ckeditor" class="form-control"
-                placeholder="Ingresa contenido embebido (iframe) de audio o video">{{ old('iframe') }}</textarea>
-            {!! $errors->first('iframe', '<span class="help-block">:message</span>') !!}
-        </div>
-    </div>
-    {{-- <div class="col">
-        <div class="form-group">
-            {!! Form::label('file', 'Audio o mp3 de la predica') !!}
-            {!! Form::file('file', ['class' => 'form-control-file', 'accept' => 'image</*', 'max' => '2048']) !!}
-        </div>
 
-        <p>la imagen no debe superar los dos 2MB</p>
-    </div> --}}
+           {{--  <label>Contenido(iframe)</label>
+            <textarea rows="2" name="iframe" id="ckeditor" class="form-control"
+                placeholder="Ingresa contenido embebido (iframe) de audio o video">{{ $preach->iframe)}}</textarea> --}}
+
+            {!! Form::label('iframe', 'Contenido(iframe):') !!}
+            {!! Form::textarea('iframe', null, ['class' => 'form-control']) !!}
+
+            {!! $errors->first('iframe', '<span class="help-block">:message</span>') !!}
+
+        </div>
+    </div>    
 </div>
 
 <div class="form-group">

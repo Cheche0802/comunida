@@ -2,19 +2,30 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\PreachCreated;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PreachRequest;
 use App\Models\Preach;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class PreachController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:admin.preachs.index')->only('index');
+        $this->middleware('can:admin.preachs.create')->only('create', 'store');
+        $this->middleware('can:admin.preachs.edit')->only('edit', 'edit');
+        $this->middleware('can:admin.preachs.destroy')->only('destroy');
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $preachs = Preach::all();
+
+        return view('admin.preachs.index', compact('preachs'));
     }
 
     /**
@@ -22,7 +33,7 @@ class PreachController extends Controller
      */
     public function create()
     {
-        return view('admin.preach.create');
+        return view('admin.preachs.create');
     }
 
     /**
@@ -30,16 +41,20 @@ class PreachController extends Controller
      */
     public function store(Request $request)
     {
+        //$this->authorize('create', new Preach);
+
+        $this->validate($request, ['title' => 'required|min:3']);
         $preach  = Preach::create($request->all());
-        if ($request->file('file')) {
+        
+        /* if ($request->file('file')) {
             $url = Storage::put('preachs', $request->file('file'));
 
             $preach->image()->create([
                 'url' => $url
             ]);
-        }
+        } */
 
-        //event(new PostCreated($post));
+        event(new PreachCreated($preach));
 
         return redirect()->route('admin.preachs.index');
     }
@@ -47,9 +62,11 @@ class PreachController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Preach $preach)
     {
-        //
+        return view('admin.preachs.show',[
+            'preach' => $preach
+        ]);
     }
 
     /**
@@ -57,9 +74,9 @@ class PreachController extends Controller
      */
     public function edit(Preach $preach)
     {
-        dd($preach);
-        
-        return view('admin.preach.edit',[
+        //$this->authorize('update', $preach);
+
+        return view('admin.preachs.edit',[
             'preach' => $preach
         ]);
     }
@@ -67,16 +84,26 @@ class PreachController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Preach $preach, PreachRequest $request)
     {
-        //
+        //dd($preach, $request->all());
+        //$this->authorize('update', $preach);
+
+        $preach->update($request->all());
+
+        return redirect()->route('admin.preachs.index')->with('info', 'Se ha guardado con exito');
+        
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Preach $preach)
     {
-        //
+        //$this->authorize('author', $preach);
+
+        $preach->delete();
+
+        return redirect()->route('admin.preachs.index')->with('info', 'Se ha guardado con exito');
     }
 }

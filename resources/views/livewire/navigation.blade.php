@@ -46,7 +46,11 @@
                                 class="text-black-600 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-5 text-base font-medium">
                                 {{ $category->name }} </a>
                         @endforeach
-                                
+                        
+                        <a href="{{ route('preachs.index') }}" class="text-black-600 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-5 text-base font-medium">
+                            Predicas
+                        </a>
+
                         <a href="{{ route('us.index') }}" class="text-black-600 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-5 text-base font-medium">
                             Quien&eacute;s somos 
                         </a>

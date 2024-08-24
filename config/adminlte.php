@@ -328,11 +328,11 @@ return [
             'route'         => 'admin.roles.index',
             'icon'        => 'fa fa-users-cog fa-fw',
         ],
-        [
+        /* [
             'text'        => 'Grupos',
             'route'         => 'admin.roles.index',
             'icon'        => 'fa fa-users fa-fw',
-        ],
+        ], */
         [
             'text'        => 'Mensajes',
             'route'         => 'admin.messages.index',
@@ -375,6 +375,20 @@ return [
             'icon'      => 'fas fa-fw fa-file',
             'active' => ['admin//post/create'],
             'can'          => 'admin.posts.create',
+        ],
+        [
+            'text'       => 'Listado de predicas',
+            'route'        => 'admin.preachs.index',
+            'icon'      => 'fas fa-fw fa-clipboard',
+            'active' => ['admin/post.index'],
+            'can'          => 'admin.preachs.index',
+        ],
+        [
+            'text'       => 'Crear nueva predica',
+            'route'        => 'admin.preachs.create',
+            'icon'      => 'fas fa-fw fa-file',
+            'active' => ['admin/post/create'],
+            'can'          => 'admin.preachs.create',
         ],
 
     ],

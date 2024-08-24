@@ -9,9 +9,9 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            {!! Form::model($prediac, ['route' => ['admin.preachs.update', $prediac],'method' => 'PUT', 'autocomplete' => 'on', 'files' => true ])!!}
+            {!! Form::model($preach, ['route' => ['admin.preachs.update', $preach],'method' => 'PUT', 'autocomplete' => 'on', 'files' => true ])!!}
 
-            @include('admin.ppreach.partials.form')
+            @include('admin.preachs.partials.form')
 
             {!! Form::submit('Actualizar', ['class' => 'btn btn-primary']) !!}
 

@@ -40,7 +40,7 @@ section #us {
 }
 
 .container .card:hover {
-    height: 700px;
+    height: 350px;
     cursor: pointer;
 }
 
@@ -83,7 +83,7 @@ section #us {
 
 .container .card:hover .content {
     top: 130px;
-    height: 750px;
+    height: 350px;
 }
 
 .container .card .content h2 {
