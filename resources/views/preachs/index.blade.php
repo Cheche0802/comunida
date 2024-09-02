@@ -13,7 +13,7 @@
         </article>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach ($preachs as $preach)
-                <article class="w-full h-80 bg-cover bg-center @if($loop->first) md:col-span-2 @endif" style="background-image: url(@if ($preach->image) {{Storage::url($preach->image->url) }} @else ext/channel_youtube.jpg @endif)">
+                <article class="w-full h-80 bg-cover bg-center @if($loop->first) md:col-span-2 @endif" style="background-image: url(@if ($preach->image) {{Storage::url($preach->image->url) }} @else ext/logo.jpg @endif)">
                     <div class="w-full h-full px-8 flex flex-col justify-center">
                         {{-- div para los tags --}}
                         {{-- <div>
@@ -23,14 +23,13 @@
                                 </a>
                             @endforeach
                         </div> --}}
-                        <h1 class="text-4xl text-white leading-8 font-bold mt-2">
-                            <a href="{{route ('preachs.show', $preach)}}" >
-                                
+                        <h1 class="text-4xl text-black leading-8 font-bold mt-2">
+                            <a href="{{route ('preachs.show', $preach)}}">
+                                {{$preach->name}}
                             </a>
                         </h1>
-                        <span class="text-2xl text-white leading-8 font-bold mt-2">
-                            {{$preach->name}}
-                        </span>
+                        {{-- <span class="text-2xl text-white leading-8 font-bold mt-2">
+                        </span> --}}
                     </div>
                 </article>
             @endforeach

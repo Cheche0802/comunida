@@ -7,9 +7,9 @@
             </h1>
         </div>
 
-        <div class="text-lg text-gray-500 mb-2 grid grid-col-1 lg:grid-cols-3 gap-6">
+        {{-- <div class="text-lg text-gray-500 mb-2 grid grid-col-1 lg:grid-cols-3 gap-6">
             {!!$preach->name!!}
-        </div>
+        </div> --}}
 
         <div class="grid grid-col-1 lg:grid-cols-3 gap-6">
             {{-- Contenido principal --}}
@@ -32,9 +32,15 @@
                 </div>
             </div>
             {{-- Contenido relacionado --}}
-            <aside hidden>
-                <span class="text-sm text-slate-900">
-                    agregar sugerencias de predicas
+            <aside>
+                <h1 class="text-2xl font-bold text-gray-600  mb-4">Predicador</h1>
+                <span class="text-lg text-slate-900">
+                    <h2>
+                        {!!$preach->name!!}
+                    </h2>
+                    <h3>
+                        {{ $preach->date }}
+                    </h3>
                 </span>
                 {{-- 
                 <h1 class="text-2xl font-bold text-gray-600  mb-4">Más en {{ $post->category->name }}</h1>
