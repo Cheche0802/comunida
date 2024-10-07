@@ -3,7 +3,7 @@
     <div class="container py-8">
         <div class="grid grid-col-1 lg:grid-cols-3 gap-6">
             <h1 class="text-4xl font-bold text-gray-600">
-                {{ $preach->title }} Pajup
+                {{ $preach->title }} 
             </h1>
         </div>
 
@@ -39,8 +39,9 @@
                         {!!$preach->name!!}
                     </h2>
                     <h3>
-                        {{ $preach->date }}
+                        {{ $dateCarbon }}
                     </h3>
+                    <span> {{ $longtime }}</span>
                 </span>
                 {{-- 
                 <h1 class="text-2xl font-bold text-gray-600  mb-4">Más en {{ $post->category->name }}</h1>

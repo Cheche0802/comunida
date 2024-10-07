@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Preach;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class PreachController extends Controller
 {
@@ -23,6 +24,10 @@ class PreachController extends Controller
 
     public function show(Preach $preach) {
 
+        $dateCarbon = Carbon::parse($preach->date)->format('d/m/Y');
+        //dd($dateCarbon);
+        $longtime = Carbon::parse($preach->date)->diffForHumans();
+        //dd($longtime);
         // $this->authorize('published', $preach);
 
         //TODO:para agregarle sugerencias de predicas
@@ -34,6 +39,6 @@ class PreachController extends Controller
                         ->take(4)
                         ->get(); */
 
-        return view ('preachs.show', compact('preach'));
+        return view ('preachs.show', compact('preach','dateCarbon','longtime'));
     }
 }
